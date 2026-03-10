@@ -1,98 +1,156 @@
 <!DOCTYPE html>
+<!-- Define que o documento utiliza HTML5 -->
+
 <html lang="pt-br">
+<!-- Define o idioma da página como português do Brasil -->
+
 <head>
+
 <meta charset="UTF-8">
+<!-- Permite o uso de acentos e caracteres especiais -->
+
 <title>Semáforo</title>
+<!-- Título da aba do navegador -->
+
 <link rel="stylesheet" href="style.css">
+<!-- Conexão com um arquivo CSS externo (caso exista) -->
+
 <style>
+    /* Estilo geral da página */
     body{
-text-align:center;
-font-family:Arial;
-}
+        text-align:center; /* Centraliza o conteúdo */
+        font-family:Arial; /* Define a fonte do texto */
+    }
 
-#semaforo{
-width:100px;
-background:black;
-padding:20px;
-margin:auto;
-border-radius:10px;
-}
+    /* Estrutura do semáforo */
+    #semaforo{
+        width:100px; /* Largura do semáforo */
+        background:black; /* Cor do corpo do semáforo */
+        padding:20px; /* Espaçamento interno */
+        margin:auto; /* Centraliza horizontalmente */
+        border-radius:10px; /* Bordas arredondadas */
+    }
 
-.luz{
-width:60px;
-height:60px;
-background:#333;
-border-radius:50%;
-margin:10px auto;
-}
+    /* Estilo das luzes */
+    .luz{
+        width:60px; /* Largura da luz */
+        height:60px; /* Altura da luz */
+        background:#333; /* Cor padrão (apagada) */
+        border-radius:50%; /* Deixa a luz redonda */
+        margin:10px auto; /* Espaçamento entre as luzes */
+    }
 
-button{
-padding:10px;
-margin:5px;
-font-size:16px;
-}
+    /* Estilo dos botões */
+    button{
+        padding:10px; /* Espaçamento interno */
+        margin:5px; /* Espaçamento externo */
+        font-size:16px; /* Tamanho da fonte */
+    }
 </style>
+
 </head>
 
 <body>
 
 <h1>Semáforo</h1>
+<!-- Título da página -->
 
+<!-- Estrutura do semáforo -->
 <div id="semaforo">
 
-<div id="vermelho" class="luz"></div>
-<div id="amarelo" class="luz"></div>
-<div id="verde" class="luz"></div>
+    <!-- Luz vermelha -->
+    <div id="vermelho" class="luz"></div>
+
+    <!-- Luz amarela -->
+    <div id="amarelo" class="luz"></div>
+
+    <!-- Luz verde -->
+    <div id="verde" class="luz"></div>
 
 </div>
 
 <br>
 
-<button onclick="vermelho()">Vermelho</button>
-<button onclick="amarelo()">Amarelo</button>
-<button onclick="verde()">Verde</button>
-<button onclick="automatico()">Automático</button>
+<!-- Botões que controlam o semáforo -->
 
+<button onclick="vermelho()">Vermelho</button>
+<!-- Acende a luz vermelha -->
+
+<button onclick="amarelo()">Amarelo</button>
+<!-- Acende a luz amarela -->
+
+<button onclick="verde()">Verde</button>
+<!-- Acende a luz verde -->
+
+<button onclick="automatico()">Automático</button>
+<!-- Ativa o modo automático -->
 
 </body>
+
 <script>
+
+    /* Função que apaga todas as luzes */
     function apagar(){
-document.getElementById("vermelho").style.background = "#333"
-document.getElementById("amarelo").style.background = "#333"
-document.getElementById("verde").style.background = "#333"
-}
 
-function vermelho(){
-apagar()
-document.getElementById("vermelho").style.background = "red"
-}
+        document.getElementById("vermelho").style.background = "#333"
+        document.getElementById("amarelo").style.background = "#333"
+        document.getElementById("verde").style.background = "#333"
 
-function amarelo(){
-apagar()
-document.getElementById("amarelo").style.background = "yellow"
-}
+    }
 
-function verde(){
-apagar()
-document.getElementById("verde").style.background = "green"
-}
+    /* Função que acende a luz vermelha */
+    function vermelho(){
 
-function automatico(){
+        apagar() // apaga todas as luzes
 
-vermelho()
+        document.getElementById("vermelho").style.background = "red"
+        // acende a luz vermelha
 
-setTimeout(function(){
-verde()
-},2000)
+    }
 
-setTimeout(function(){
-amarelo()
-},4000)
+    /* Função que acende a luz amarela */
+    function amarelo(){
 
-setTimeout(function(){
-vermelho()
-},6000)
+        apagar() // apaga todas as luzes
 
-}
+        document.getElementById("amarelo").style.background = "yellow"
+        // acende a luz amarela
+
+    }
+
+    /* Função que acende a luz verde */
+    function verde(){
+
+        apagar() // apaga todas as luzes
+
+        document.getElementById("verde").style.background = "green"
+        // acende a luz verde
+
+    }
+
+    /* Função que ativa o modo automático do semáforo */
+    function automatico(){
+
+        vermelho()
+        // inicia com o vermelho
+
+        setTimeout(function(){
+            verde()
+        },2000)
+        // após 2 segundos acende o verde
+
+        setTimeout(function(){
+            amarelo()
+        },4000)
+        // após 4 segundos acende o amarelo
+
+        setTimeout(function(){
+            vermelho()
+        },6000)
+        // após 6 segundos volta para o vermelho
+
+    }
+
 </script>
+
 </html>
