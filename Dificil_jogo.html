@@ -109,82 +109,78 @@
       }
       
 </style>
-// --- Seleção de Elementos do DOM ---
-const botoes = document.querySelectorAll('button'); // Captura todos os botões de escolha
-const displayResultado = document.querySelector('h4'); // Onde exibiremos o texto final
 
-// Lista de opções possíveis para facilitar a lógica do computador
+<body>
+    <h1>Bem vindo ao jogo PEDRA, PAPEL E TESOURA!</h1>
+    <h3>Escolha sua opção:</h3>
+<div class="container-opcoes">
+    <button id="pedra"><img src="PEDRA.png" alt="pedra"></button>
+    <button id="papel"><img src="PAPEL.PNG" alt="papel"></button>
+    <button id="tesoura"><img src="TESOURA.PNG" alt="tesoura"></button>
+</div>
+
+<h4>Resultado: </h4>
+
+</body>
+
+<script>
+// Seleciona botões em uma lista e o elemento de texto onde o resultado será mostrado
+const botoes = document.querySelectorAll('button');
+const displayResultado = document.querySelector('h4');
+
+// Definição das opções do jogo.
 const opcoes = ['pedra', 'papel', 'tesoura'];
 
-// --- Gerenciamento de Eventos ---
-// Adiciona um evento de clique para cada botão individualmente
+// Fluxo principal do jogo, escuta o clique e ativa as funções com o parametro da escolha do usuário.
 botoes.forEach(botao => {
     botao.addEventListener('click', () => {
-        const escolhaUsuario = botao.id; // Pega o ID (pedra, papel ou tesoura)
-        const escolhaComputador = gerarEscolhaComputador(); // Sorteia a jogada do PC
-        
-        // Busca os emojis correspondentes às escolhas
+        const escolhaUsuario = botao.id;
+        const escolhaComputador = gerarEscolhaComputador();
+
         const emojiUser = retornarEmoji(escolhaUsuario);
         const emojiPC = retornarEmoji(escolhaComputador);
-        
-        // Calcula quem venceu a rodada
+
         const statusWin = determinarVencedor(escolhaUsuario, escolhaComputador);
-        
-        // Atualiza a interface com as informações processadas
+
         exibirResultado(escolhaUsuario, escolhaComputador, statusWin, emojiUser, emojiPC);
     });
 });
 
-// --- Funções de Lógica ---
-
-/**
- * Converte a string de escolha em um emoji visual.
- * @param {string} escolha - A jogada feita.
- */
+// conversão de emojis
 function retornarEmoji(escolha) {
     if (escolha === 'pedra') return "🪨";
     if (escolha === 'papel') return "📄";
     if (escolha === 'tesoura') return "✂️";
 }
 
-/**
- * Gera uma escolha aleatória para o computador baseada no array 'opcoes'.
- */
+// Escolhe aleatoriamente pedra/papel/tesoura para o computador
 function gerarEscolhaComputador() {
-    const indiceAleatorio = Math.floor(Math.random() * 3); // Gera 0, 1 ou 2
+    const indiceAleatorio = Math.floor(Math.random() * 3);
     return opcoes[indiceAleatorio];
 }
 
-/**
- * Compara as jogadas e define o estado da partida.
- */
+// Determina vencedor segundo as regras do jogo
 function determinarVencedor(usuario, computador) {
-    // Caso de empate: escolhas idênticas
     if (usuario === computador) return "Empate! 🤝";
-    
-    // Regras de vitória do usuário
+
     if (
-        (usuario === 'pedra' && computador === 'tesoura') || // Pedra vence Tesoura
-        (usuario === 'papel' && computador === 'pedra') ||   // Papel vence Pedra
-        (usuario === 'tesoura' && computador === 'papel')    // Tesoura vence Papel
+        (usuario === 'pedra' && computador === 'tesoura') ||
+        (usuario === 'papel' && computador === 'pedra') ||
+        (usuario === 'tesoura' && computador === 'papel')
     ) {
         return "Você Venceu! 🎉";
     } else {
-        // Se não empatou nem ganhou, o usuário perdeu
         return "Você Perdeu! 😢";
     }
 }
 
-/**
- * Atualiza o conteúdo HTML da página para mostrar o resultado final.
- */
+// Função que exibe os resultados
 function exibirResultado(user, pc, res, emojuser, emojpc) {
     displayResultado.innerHTML = `
-        Sua escolha: <strong>${user.toUpperCase()}</strong> ${emojuser} | 
-        Computador: <strong>${pc.toUpperCase()}</strong> ${emojpc} | 
-        <br><span>${res}</span>
+        Sua escolha: ${user.toUpperCase()} ${emojuser} | 
+        Computador: ${pc.toUpperCase()} ${emojpc} |
+        ${res}
     `;
 }
 </script>
-</body>
 </html>
