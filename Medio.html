@@ -4,10 +4,7 @@
 <meta charset="UTF-8">
 <title>Semáforo</title>
 <link rel="stylesheet" href="style.css">
-<!-- Conexão com um arquivo CSS externo (caso exista) -->
-
 <style>
-    /* Estilo geral da página */
     body{
         text-align:center; /* Centraliza o conteúdo */
         font-family:Arial; /* Define a fonte do texto */
@@ -15,84 +12,60 @@
 
     /* Estrutura do semáforo */
     #semaforo{
-        width:100px; /* Largura do semáforo */
-        background:black; /* Cor do corpo do semáforo */
-        padding:20px; /* Espaçamento interno */
-        margin:auto; /* Centraliza horizontalmente */
-        border-radius:10px; /* Bordas arredondadas */
+        width:100px;
+        background:black;
+        padding:20px;
+        margin:auto;
+        border-radius:10px;
     }
 
     /* Estilo das luzes */
     .luz{
-        width:60px; /* Largura da luz */
-        height:60px; /* Altura da luz */
-        background:#333; /* Cor padrão (apagada) */
-        border-radius:50%; /* Deixa a luz redonda */
-        margin:10px auto; /* Espaçamento entre as luzes */
+        width:60px;
+        height:60px;
+        background:#333;
+        border-radius:50%;
+        margin:10px auto;
     }
 
     /* Estilo dos botões */
     button{
-        padding:10px; /* Espaçamento interno */
-        margin:5px; /* Espaçamento externo */
-        font-size:16px; /* Tamanho da fonte */
+        padding:10px;
+        margin:5px;
+        font-size:16px;
     }
 </style>
-
 </head>
-
 <body>
-
 <h1>Semáforo</h1>
-<!-- Título da página -->
-
-<!-- Estrutura do semáforo -->
 <div id="semaforo">
-
-    <!-- Luz vermelha -->
     <div id="vermelho" class="luz"></div>
-
-    <!-- Luz amarela -->
     <div id="amarelo" class="luz"></div>
-
-    <!-- Luz verde -->
     <div id="verde" class="luz"></div>
-
 </div>
-
+    
 <br>
-
-<!-- Botões que controlam o semáforo -->
-
+    
+<!-- Botões que controlam o semáforo -->  
 <button onclick="vermelho()">Vermelho</button>
-<!-- Acende a luz vermelha -->
-
 <button onclick="amarelo()">Amarelo</button>
-<!-- Acende a luz amarela -->
-
 <button onclick="verde()">Verde</button>
-<!-- Acende a luz verde -->
-
 <button onclick="automatico()">Automático</button>
-<!-- Ativa o modo automático -->
 
 </body>
-
 <script>
-
     /* Função que apaga todas as luzes */
     function apagar(){
 
         document.getElementById("vermelho").style.background = "#333"
         document.getElementById("amarelo").style.background = "#333"
         document.getElementById("verde").style.background = "#333"
-
     }
 
     /* Função que acende a luz vermelha */
     function vermelho(){
 
-        apagar() // apaga todas as luzes
+        apagar()
 
         document.getElementById("vermelho").style.background = "red"
         // acende a luz vermelha
@@ -102,17 +75,16 @@
     /* Função que acende a luz amarela */
     function amarelo(){
 
-        apagar() // apaga todas as luzes
+        apagar()
 
         document.getElementById("amarelo").style.background = "yellow"
         // acende a luz amarela
-
     }
 
     /* Função que acende a luz verde */
     function verde(){
 
-        apagar() // apaga todas as luzes
+        apagar()
 
         document.getElementById("verde").style.background = "green"
         // acende a luz verde
@@ -121,9 +93,8 @@
 
     /* Função que ativa o modo automático do semáforo */
     function automatico(){
-
         vermelho()
-        // inicia com o vermelho
+        // inicia com o vermelh
 
         setTimeout(function(){
             verde()
@@ -143,5 +114,4 @@
     }
 
 </script>
-
 </html>
