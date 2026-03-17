@@ -14,3 +14,11 @@ Enquanto o botão 'btn-break' for clicado, o estado da lâmpada vai mudar para '
 ### consertar ()
 Enquanto o botão 'btn-break' não for clicado ou o botão 'btn-fix' for clicado, o estado da lâmpada vai alterar-se de 'estaQuebrada' para 'false', mantendo ela funcional.
 
+***
+
+
+
+# piahfpisdhgf
+
+
+___
